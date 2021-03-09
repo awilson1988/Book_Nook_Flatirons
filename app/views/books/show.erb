@@ -1,0 +1,21 @@
+<h1>Book Nook</h1>
+
+<h2>Here is a little more info on this Book</h2>
+
+<br>
+
+<p>Title: <%= @book.title %></p>
+<p>Author: <%= @book.author %></p> 
+<p>Summary: <%= @book.summary %></p>
+
+<a href="/books/new/">Add Your Review</a>
+
+<br>
+<br>
+
+<h3>Reviews:</h3>
+<% @book.reviews.each do |review| %>
+  <h4><%= review.user.username %></h4>
+<br>
+<br>
+<% end %>

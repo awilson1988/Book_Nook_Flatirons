@@ -1,0 +1,19 @@
+<h1>Book Nook</h1>
+
+<h2>Edit your account</h2>
+
+<form action="/users/<%=@user.id%>" method="POST">
+<input type="hidden" value= "PATCH" name="_method">
+
+  <br>
+  Enter Username: <input type=text name="user[username]" >
+  <div>
+  <br>
+  <input type=submit value="Edit Profile" >
+  
+</form>
+
+<form action="/users/<%=@user.id%>" method="POST">
+<input type="hidden" value= "DELETE" name="_method">
+<input type="submit" class="btn btn-danger" value="DELETE Profile" >
+</form>

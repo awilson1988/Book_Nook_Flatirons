@@ -1,0 +1,8 @@
+<h1>Book Nook</h1>
+
+<form action="/books/<%= @book.id %>" method="POST">
+<input type="hidden" name="_method" value="patch">
+Title: <input type="text" name="title" value="<%= @book.title %>">
+Comments: <textarea name="comments"><%= @book.comments %></textarea>
+<input type="submit" value="Edit Book Review">
+</form>

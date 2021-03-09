@@ -1,0 +1,23 @@
+<h1>Book Nook</h1> 
+
+<h2>Edit your Book review:</h2> 
+
+<form action="/reviews/<%=@review.id%>" method= "POST">
+    <input type="hidden" name="_method" value="PATCH">
+    <p>Title of Book: <input type=text name="title" value="<%= @review.title %>"></p>
+    <p>Author: <input type=text name="author" value="<%= @review.author %>"></p>
+    <div>
+    <br>
+    <p>Comments:   
+    <textarea rows = "5" cols = "50" name = "description">
+    Your thoughts on the book...
+    </textarea>
+    <br>
+    <input type=submit value="Submit Review" >
+    <br>
+    </form>
+
+    <form action="/reviews/<%=@review.id%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Review">
+</form>
