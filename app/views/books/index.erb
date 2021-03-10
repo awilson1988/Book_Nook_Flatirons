@@ -3,5 +3,7 @@
 <h2>Select a Book to add a review</h2>
 
 <% @books.each do |book| %>
-    <h4><a href="/books/<%= book.id %>"> <%= book.title %></h4></a>
-  <% end %>
+  <h4><a href="/books/<%= book.id %>"> <%= book.title %></h4></a>
+<% end %>
+  
+
