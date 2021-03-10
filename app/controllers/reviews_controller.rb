@@ -1,5 +1,14 @@
 class ReviewsController < ApplicationController    
   
+#create review
+post '/reviews' do
+  @book = Book.find_by(id: params[:book_id])
+  review = @book.reviews.build(comments: params[:comments])
+  if review.save
+    redirect "/books/#{@book}"
+  end 
+end
+
     #render form to edit review
     get '/reviews/:id/edit' do
       @review = Review.find_by(id:params[:id])

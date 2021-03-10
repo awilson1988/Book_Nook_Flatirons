@@ -19,6 +19,7 @@
         <%if logged_in?%>
         <a href="/users/<%= current_user.id %>"><button>My Profile</button></a>
         <a href="/books"><button>Review a New Book</button></a>
+        <a href="/books/new"><button>Add to Bookshelf</button></a>
         <a href="/logout"><button>Log Out</button></a>
         <%end%>
       
