@@ -5,7 +5,7 @@
 <h2>You have <%= @user.books.size %> Book(s) logged!</h2>
 
 <h3>Book(s) Created:</h3>
-  <% if @book.each do |book| %>
+  <% @book.each do |book| %>
     <h4><a href="/books/<%=book.id%>/edit"> <%= book.title %></h4></a>
   <% end %>
 
