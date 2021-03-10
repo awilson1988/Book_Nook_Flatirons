@@ -1,8 +1,13 @@
-<h1><%= @user.username %>'s Reviews</h1>
+<h1><%= @user.username %>'s Profile</h1>
 <h4><a href="<%=@user.id%>/edit">Edit your profile</h4></a>
 
 
-<h2>You have <%= @user.reviews.size %> Book(s) logged!</h2>
+<h2>You have <%= @user.books.size %> Book(s) logged!</h2>
+
+<h3>Book(s) Created:</h3>
+  <% @user.books.each do |book| %>
+    <h4><a href="/books/<%=book.id%>/edit"> <%= book.title %></h4></a>
+  <% end %>
 
 <h3>Review(s):</h3>
   <% @user.reviews.each do |review| %>

@@ -22,6 +22,7 @@ class BooksController < ApplicationController
  #create books
   post '/books' do
     @book = Book.new(params)
+    @book.creator_id = session[:current_user]
     @book.save
     redirect "/books/#{@book.id}"
   end
@@ -41,7 +42,21 @@ class BooksController < ApplicationController
   delete '/books/:id' do
     book = Book.find_by(id:params[:id])
     book.delete 
-    redirect "/books/#{@book.id}"
+    redirect "/books"
   end
+
+  def get_book 
+    @book = Book.find_by(id:params[:id])
+end 
+
+def redirect_if_not_authorized
+    if @book.user != current_user
+        flash[:error] = "You cant make this edit, you don't own this"
+        redirect '/posts'
+    end 
+
+  end 
+
+end  
+
   
-end
