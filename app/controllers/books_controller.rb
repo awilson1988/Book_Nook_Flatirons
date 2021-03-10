@@ -22,7 +22,7 @@ class BooksController < ApplicationController
  #create books
   post '/books' do
     @book = Book.new(params)
-    @book.creator_id = session[:current_user]
+    @book.creator_id = session[:user_id]
     @book.save
     redirect "/books/#{@book.id}"
   end
