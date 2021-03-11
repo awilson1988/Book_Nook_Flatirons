@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     #show user profile
     get '/users/:id' do
       @user = User.find_by(id:params[:id])
-      @books = Book.all
+      @books = @user.books
       erb :'/users/show'
     end
   
