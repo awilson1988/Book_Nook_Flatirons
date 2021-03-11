@@ -5,9 +5,10 @@
 <h2>You have <%= @user.books.size %> Book(s) logged!</h2>
 
 <h3>Book(s) Created:</h3>
-  <% @book.each do |book| %>
-    <h4><a href="/books/<%=book.id%>/edit"> <%= book.title %></h4></a>
-  <% end %>
+<% @books.each do |b| %>
+  <h4><a href="/books/<%=b.id%>/edit"> <%= b.title %></h4></a>
+<% end %>
+
 
 <h3>Review(s):</h3>
   <% @user.reviews.each do |review| %>
