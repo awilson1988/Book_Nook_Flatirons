@@ -29,16 +29,14 @@ class BooksController < ApplicationController
       
     #renders form to edit book
   get '/books/:id/edit' do 
-    get_book 
-    redirect_if_not_authorized
+    @book = Book.find_by(id: params[:id])
     erb :'/books/edit'
   end
   
     #updates book
   patch '/books/:id' do
-    get_book
-    redirect_if_not_authorized
-    @book.update(title: params[:title], comments: params[:comments])
+    @book = Book.find_by(id: params[:id])
+    @book.update(title: params[:title], author: params[:author], summary: params[:summary])
     redirect "/books/#{@book.id}"
   end
   

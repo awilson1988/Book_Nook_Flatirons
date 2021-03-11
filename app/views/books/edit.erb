@@ -1,8 +1,19 @@
 <h1>Book Nook</h1>
 
+<h2>Edit your Book info here</h2>
+
 <form action="/books/<%= @book.id %>" method="POST">
-<input type="hidden" name="_method" value="patch">
-Title: <input type="text" name="title" value="<%= @book.title %>">
-Comments: <textarea name="comments"><%= @book.comments %></textarea>
-<input type="submit" value="Edit Book Review">
+<input type="hidden" name="_method" value="PATCH">
+Title of Book: <input type="text" name="title" value="<%= @book.title %>">
+Author: <input type="text" name="author" value="<%= @book.author %>">
+Summary: <textarea type="textarea" name="summary" value="<%= @book.summary %>"></textarea>
+<br> 
+<br>
+<input type="submit" value="Edit Book Info"> 
+</form>
+<br>
+<br>
+<form action="/books/<%=@book.id%>" method="POST">
+<input type="hidden" value= "DELETE" name="_method">
+<input type="submit" class="btn btn-danger" value="Delete This Book" >
 </form>
