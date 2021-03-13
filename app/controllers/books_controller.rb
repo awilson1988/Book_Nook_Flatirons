@@ -33,15 +33,19 @@ class BooksController < ApplicationController
   get '/books/:id/edit' do 
     redirect_if_not_logged_in
     @book = Book.find_by(id: params[:id])
+    if @book.user_id != current_user
     erb :'/books/edit'
   end
+end
   
     #updates book
   patch '/books/:id' do
     @book = Book.find_by(id: params[:id])
+    if @book.user_id != current_user
     @book.update(title: params[:title], author: params[:author], summary: params[:summary])
     redirect "/books/#{@book.id}"
   end
+end
   
     #deletes existing user
   delete '/books/:id' do

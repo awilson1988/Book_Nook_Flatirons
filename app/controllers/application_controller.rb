@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def logged_in?
-      !!session[:user_id]
+      !!current_user
     end
 
     def redirect_if_not_logged_in
