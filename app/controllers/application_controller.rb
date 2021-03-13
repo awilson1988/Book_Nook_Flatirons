@@ -29,8 +29,20 @@ class ApplicationController < Sinatra::Base
     def redirect_if_not_logged_in
       if !logged_in?
         flash[:error] = "Sorry it looks like your not logged in!"
-        redirect '/users/login'
+        redirect "/"
       end
     end
-  end
+  
+    def book_owner?(book)
+      if current_user != book.user
+        flash[:error] = "Sorry, you can't make changes to that!" 
+      end 
+    end
+
+    def review_owner?(review)
+      if current_user != review.user
+        flash[:error] = "Sorry, you can't make changes to that!"
+      end 
+    end 
+  end 
 end

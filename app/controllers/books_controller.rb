@@ -9,6 +9,7 @@ class BooksController < ApplicationController
 
   #render form to create books
   get '/books/new' do
+    redirect_if_not_logged_in
     erb :'/books/new'
   end
   
@@ -21,6 +22,7 @@ class BooksController < ApplicationController
   
  #create books
   post '/books' do
+    redirect_if_not_logged_in
     @book = Book.new(params)
     @book.user_id = session[:user_id]
     @book.save
@@ -29,6 +31,7 @@ class BooksController < ApplicationController
       
     #renders form to edit book
   get '/books/:id/edit' do 
+    redirect_if_not_logged_in
     @book = Book.find_by(id: params[:id])
     erb :'/books/edit'
   end

@@ -2,8 +2,10 @@ class ReviewsController < ApplicationController
   
 #create review
 post '/reviews' do
-  @book = Book.find_by(id: params[:book_id])
+  @book = Book.find_by(book: params[:book_id])
   review = @book.reviews.build(comments: params[:comments])
+  @reviews = @book.reviews
+  
   if review.save
     redirect "/books/#{@book}"
   end 

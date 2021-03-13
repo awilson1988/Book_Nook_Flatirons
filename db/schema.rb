@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_03_10_010235) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.string "author"
+    t.string "author" 
     t.string "genre"
     t.text "summary"
     t.integer "user_id"

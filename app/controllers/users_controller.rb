@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   
     #show user profile
     get '/users/:id' do
+      redirect_if_not_logged_in
       @user = User.find_by(id:params[:id])
       @books = @user.books
       erb :'/users/show'
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
   
       #renders form to edit user
       get '/users/:id/edit' do 
+        redirect_if_not_logged_in
         @user = User.find_by(id: params[:id])
         erb :'/users/edit'
       end
