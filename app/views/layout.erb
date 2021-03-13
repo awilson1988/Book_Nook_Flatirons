@@ -8,15 +8,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
     <title>SinatraApp</title>
-
+    
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
+
   <nav>
-        <%if logged_in?%>
+        <%if (logged_in?) then%>
         <a href="/users/<%= current_user.id %>"><button>My Profile</button></a>
         <a href="/books"><button>Review a New Book</button></a>
         <a href="/books/new"><button>Add to Bookshelf</button></a>
@@ -47,5 +48,6 @@
       <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
       <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
     <![endif]-->
+ 
   </body>
 </html>
