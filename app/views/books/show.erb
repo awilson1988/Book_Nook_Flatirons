@@ -10,6 +10,7 @@
 
 <form action="/reviews" method="post">
     Comments: <textarea name="comments"></textarea>
+    <input type="hidden" name="book_id" value="<%=@book.id%>">
     <input type="submit" value="Create a New Review">
 </form>
 
@@ -20,8 +21,12 @@
 <br>
 
 <h3>Reviews:</h3>
-<% @book.reviews.each do |review| %>
-  <h4><%= review.user.username %></h4>
+<% @book.reviews.each do |r| %>
+  <%=@book.username%>
+  <%=r.comments%>
+
 <br>
 <br>
-<% end %>
+  <% end %> 
+
+
