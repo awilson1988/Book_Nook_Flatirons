@@ -7,11 +7,11 @@
 <p>Title: <%= @book.title %></p>
 <p>Author: <%= @book.author %></p> 
 <p>Summary: <%= @book.summary %></p>
-
+<br>
 <form action="/reviews" method="post">
-    Comments: <textarea name="comments"></textarea>
+    Your Thoughts: <textarea name="comments"></textarea>
     <input type="hidden" name="book_id" value="<%=@book.id%>">
-    <input type="submit" value="Create a New Review">
+    <input type="submit" value="Add your Comment">
 </form>
 
 
@@ -26,11 +26,10 @@
       <div class="p-2"><span class="round"><img src="https://picsum.photos/200/300" width="70px" height="120px" border-style="solid" border-color="black" padding="5em" style="float:left;"></span></div>
          <div class="comment-text w-200">
          <p style="border: 3px; border-style:solid; border-color:#000000; padding: 2em; height: 50px; width: 300px;">
-            User Comments: <%=r.comments%><style= float:right> <br>
+            User Comment: <%=r.comments%><style= float:right> <br>
             <br>
             Posted at: <%=Time.now.utc %>
             </p> 
-          </display box>
   </div>
 <br>
 <br>
