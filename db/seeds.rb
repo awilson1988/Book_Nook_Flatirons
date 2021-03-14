@@ -1,5 +1,3 @@
-User.create(username: 'ablaze88', email: 'amanda.blaze1988@gmail.com', password: 'password')
-
 Book.create(title: 'Don Quixote', author: 'Miguel de Cervantes Saavedra', summary: 'Don Quixote is a middle-aged 
 gentleman from the region of La Mancha in central Spain. Obsessed with the chivalrous ideals touted in books he has 
 read, he decides to take up his lance and sword to defend the helpless and destroy the wicked.')

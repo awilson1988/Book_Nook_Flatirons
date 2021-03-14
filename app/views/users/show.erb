@@ -1,9 +1,14 @@
 <h1><%= @user.username %>'s Profile</h1>
+
+
 <h4><a href="<%=@user.id%>/edit">Edit your profile</h4></a>
 
 
 <h2>You have <%= @user.books.size %> Book(s) logged!</h2>
-
+<h3>About Me:
+<br> 
+<%= @user.about_me %></h3>
+<br
 <h3>Book(s) Created:</h3>
 <%current_user.books.each do |b| %>
   <h4><a href="/books/<%=b.id%>/edit"> <%= b.title %></h4></a>
