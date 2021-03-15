@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+
+    get '/users/index' do
+      @users = User.all
+      erb :'/users/index'
+    end
  
  
     #render signup form to create user

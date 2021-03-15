@@ -1,0 +1,12 @@
+
+<h1>These are all the Book Nook Users</h1>
+
+<br>
+
+<% @users.each do |u| %>
+    <h2>Username: <%= u.username %></h2>
+    <h3> Email: <%= u.email %> </h3> 
+    <br>
+    <h3>About User: <%= u.about_me %></h3>
+    <br>
+  <% end %>
