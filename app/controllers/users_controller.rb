@@ -18,11 +18,11 @@ class UsersController < ApplicationController
     
     #create user
     post '/signup' do
-      user = User.create(name: params[:name], username: params[:username], email: params[:email], password: params[:password], about_me: params[:about_me])
-      if user.valid?
-        session[:user_id] = user.id
-        redirect "/users/#{user.id}"
-      elsif user.invalid? && User.find_by(username: user.username)
+      @user = User.create(name: params[:name], username: params[:username], email: params[:email], password: params[:password], about_me: params[:about_me])
+      if @user.valid?
+        session[:user_id] = @user.id
+        redirect "/users/#{@user.id}"
+      elsif @user.invalid? && User.find_by(username: @user.username)
         flash[:error] = "Sorry, that username is already taken."
         erb :'/users/signup'
       else
