@@ -24,13 +24,14 @@ class UsersController < ApplicationController
         redirect "/users/#{@user.id}"
       elsif @user.invalid? && User.find_by(username: @user.username)
         flash[:error] = "Sorry, that username is already taken."
-        erb :'/users/signup'
+        redirect '/users/signup'
       else
         flash[:error] = "Please make sure to fill out all criteria."
-        erb :'/users/signup'
+        redirect '/users/signup'
       end
     end
-  
+  #Change erb's to redirects 
+
     #show user profile
     get '/users/:id' do
       redirect_if_not_logged_in

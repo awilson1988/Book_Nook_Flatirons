@@ -1,4 +1,4 @@
 class Book < ActiveRecord::Base 
     has_many :reviews 
-    belongs_to :users
+    belongs_to :user
   end

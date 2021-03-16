@@ -17,6 +17,8 @@ class BooksController < ApplicationController
   #show single book
   get '/books/:id' do
     @book = Book.find_by_id(params[:id])
+    @review = @book.reviews
+    
     erb :'/books/show'
   end
   
@@ -33,9 +35,12 @@ class BooksController < ApplicationController
   get '/books/:id/edit' do 
     redirect_if_not_logged_in
     @book = Book.find_by(id: params[:id])
-    if @book.user_id != current_user
+    if @book.user == current_user
     erb :'/books/edit'
-  end
+    else 
+      flash[:error] = "You can't make changes to that! It doesn't belong to you!"
+      redirect "/books"
+  end # Add else to redirect to books
 end
   
     #updates book
@@ -59,7 +64,7 @@ end
 end 
 
 def redirect_if_not_authorized
-    if @book.user_id != current_user
+    if @book.user != current_user
         flash[:error] = "You cant make this edit, you don't own this"
         redirect '/posts'
     end 
