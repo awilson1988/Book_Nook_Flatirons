@@ -12,9 +12,9 @@ Usage
 
 After cloning the repository, change directory by running cd Book_Nook_Flatirons/. Then, run the following:
 
-bundle install
-rake db:migrate
-rake db:seed
+bundle install,
+rake db:migrate,
+rake db:seed,
 shotgun
 
 Then, paste http://localhost:9393/ into your web browser.
