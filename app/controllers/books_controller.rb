@@ -1,5 +1,7 @@
 class BooksController < ApplicationController  
   
+
+  puts "Hello"
   #show all books
   get '/books' do
     @books = Book.all
