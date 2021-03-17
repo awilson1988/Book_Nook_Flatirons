@@ -45,17 +45,25 @@ end
     #updates book
   patch '/books/:id' do
     @book = Book.find_by(id: params[:id])
-    if @book.user_id != current_user
+    if @book.user == current_user
     @book.update(title: params[:title], author: params[:author], summary: params[:summary])
     redirect "/books/#{@book.id}"
+    else 
+      flash[:error] = "You can't make changes to that! It doesn't belong to you!"
+      redirect "/books"
   end
 end
   
     #deletes existing user
   delete '/books/:id' do
     book = Book.find_by(id:params[:id])
+    if @book.user == current_user
     book.delete 
-    redirect "/books"
+    redirect "/books" 
+    else 
+      flash[:error] = "You can't make changes to that! It doesn't belong to you!"
+      redirect "/books"   
+    end
   end
 
   def get_book 

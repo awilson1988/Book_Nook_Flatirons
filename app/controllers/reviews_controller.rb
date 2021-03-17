@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   
 #create review
 post '/reviews' do
+  redirect_if_not_logged_in
   @book = Book.find_by(id: params[:book_id])
   review = @book.reviews.build(comments: params[:comments])
   review.user = current_user
@@ -23,18 +24,30 @@ end
     #updates review
     patch '/reviews/:id' do
       book = Book.find_by(id:params[:id])
-      review = Review.find_by(id:params[:id])
+      @review = Review.find_by(id:params[:id])
+      if @review.user == current_user
       review.update(comments: params[:comments])
-      redirect "/users/#{user.id}"
+      redirect "/users/#{user.id}" 
+      else 
+        flash[:error] = "You can't make changes to that! It doesn't belong to you!"
+        redirect "/books/#{@book.id}"
+      end 
+
+
     end 
   
     #deletes review
     delete '/reviews/:id' do
-      user = current_user
-      book = Book.find_by(id:params[:id])
-      review = Review.find_by(id:params[:id])
-      review.delete
-      redirect "/users/#{user.id}"
+      @book = Book.find_by(id:params[:id])
+      @review = Review.find_by(id:params[:id])
+      if @review.user == current_user
+      @review.delete
+      redirect "/users/#{current_user.id}" 
+      else 
+        flash[:error] = "You can't make changes to that! It doesn't belong to you!"
+        redirect "/books/#{@book.id}" 
+      end
+
     end
   
   end 
