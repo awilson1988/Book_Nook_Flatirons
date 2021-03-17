@@ -7,6 +7,7 @@
 <p>Title: <%= @book.title %></p>
 <p>Author: <%= @book.author %></p> 
 <p>Summary: <%= @book.summary %></p>
+<p>Added by: <%= @book.user ? @book.user.username : "no user" %></p>
 <br>
 <form action="/reviews" method="post">
     Your Thoughts: <textarea name="comments"></textarea>

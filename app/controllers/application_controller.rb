@@ -33,15 +33,15 @@ class ApplicationController < Sinatra::Base
       end
     end
   
-    def book_owner?(book)
-      if current_user != book.user
-        flash[:error] = "Sorry, you can't make changes to that!" 
-        redirect "/books"
-      end 
-    end
+    # def book_owner?(book)
+    #   if current_user != book.user
+    #     flash[:error] = "Sorry, you can't make changes to that!" 
+    #     redirect "/books"
+    #   end 
+    # end
 
-    def review_owner?(review)
-      if current_user != review.user
+    def owner?(object)
+      if current_user != object.user
         flash[:error] = "Sorry, you can't make changes to that!"
         redirect "/books"
       end 

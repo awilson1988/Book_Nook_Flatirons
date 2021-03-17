@@ -16,20 +16,17 @@ end
       redirect_if_not_logged_in
       @book = Book.find_by(id: params[:book_id])
       @review = Review.find_by(id:params[:id])
-      if @review.user == current_user
+      owner?(@review)
         erb :'/reviews/edit'
-      else 
-        flash[:error] = "You can't make changes to that! It doesn't belong to you!"
-        redirect "/books"
-    end
+
   end
     #updates review
     patch '/reviews/:id' do
-      book = Book.find_by(id:params[:id])
+      @book = Book.find_by(id:params[:id])
       @review = Review.find_by(id:params[:id])
       if @review.user == current_user
       @review.update(comments: params[:comments])
-        redirect "/books" 
+      redirect "/books"
       else 
         flash[:error] = "You can't make changes to that! It doesn't belong to you!"
         redirect "/books"

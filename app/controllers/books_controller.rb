@@ -34,13 +34,10 @@ class BooksController < ApplicationController
   get '/books/:id/edit' do 
     redirect_if_not_logged_in
     @book = Book.find_by(id: params[:id])
-    if @book.user == current_user
+    owner?(@book)
     erb :'/books/edit'
-    else 
-      flash[:error] = "You can't make changes to that! It doesn't belong to you!"
-      redirect "/books"
   end # Add else to redirect to books
-end
+
   
     #updates book
   patch '/books/:id' do
