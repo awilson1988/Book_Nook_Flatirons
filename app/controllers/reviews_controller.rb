@@ -25,7 +25,7 @@ end
   end
     #updates review
     patch '/reviews/:id' do
-      @book = Book.find_by(id:params[:id])
+      book = Book.find_by(id:params[:id])
       @review = Review.find_by(id:params[:id])
       if @review.user == current_user
       @review.update(comments: params[:comments])
@@ -47,7 +47,7 @@ end
       redirect "/users/#{current_user.id}" 
       else 
         flash[:error] = "You can't make changes to that! It doesn't belong to you!"
-        redirect "/books/#{@book.id}" 
+        redirect "/books" 
       end
 
     end
