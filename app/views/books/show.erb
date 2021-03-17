@@ -29,8 +29,11 @@
             <%= r.user.username %>'s Comment: <%=r.comments%><style= float:right> <br>
             <br>
             Posted at: <%=Time.now.utc %>
-            </p> 
-  </div>
+             
+        
+  <h4><a href="/reviews/<%=r.id%>/edit">Edit your Review</h4></a>   
+  </p> 
+  </div> 
 <br>
 <br>
   <% end %> 
